@@ -1,0 +1,5 @@
+name = AT Rrequire
+version = 7.x-1.0-dev
+description = Easier for modules/themes to require external libraries.
+core = 7.x
+package = Andy Truong
