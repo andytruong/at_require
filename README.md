@@ -1,12 +1,14 @@
 at_require
 ==========
 
+Module provides drush command to download all dependencies for your modules.
+
 Easier for modules/themes to require external libraries.
 
-To define dependencies, modules/themes need defined ./config/require.yml
+To define dependencies, modules/themes need defined ./config/at_require.yml
 
 ```yml
-requirements:
+projects:
   ctools:
     type: module
     version: 1.3
@@ -29,5 +31,8 @@ requirements:
 To downlaod requirements:
 
 ```bash
-drush at_require
+$ # Download dependencies for all modules
+$ drush at_require
+$ # Download dependencies for specific module
+$ drush at_require module_name
 ```
