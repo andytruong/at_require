@@ -13,15 +13,17 @@ class DependenciesFetcher {
   private $data;
 
   public function __construct($module) {
-    drush_print_r(__CLASS__ . ': ' . $module);
     try {
       $this->module = $module;
       $this->data   = at_config($module, 'at_require')->get('projects');
     }
-    catch (\Exception $e) {
+    // Missing spyc
+    catch (\RuntimeException $e) {
       $this->fetchSpyc();
       $this->data = at_config($module, 'at_require')->get('projects');
     }
+    // Find not found, just ignore
+    catch (\Exception $e) {}
   }
 
   public function fetch() {

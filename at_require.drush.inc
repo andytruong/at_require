@@ -42,3 +42,12 @@ function drush_at_require($module = 'all') {
   $command = new AtRequireCommand($module);
   $command->execute();
 }
+
+/**
+ * Implements drush_hook_COMMAND_pre_validate()
+ */
+function drush_at_require_pm_enable_pre_validate($module) {
+  if (!module_exists($module)) {
+    drush_at_require($module);
+  }
+}

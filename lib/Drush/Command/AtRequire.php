@@ -26,10 +26,7 @@ class AtRequire {
       }
     }
     else {
-      if (!module_exists($this->module)) {
-        throw new \Exception('Invalid module: ' . $this->module);
-      }
-      $modules[] = $module;
+      $modules[] = $this->module;
     }
 
     return $modules;
