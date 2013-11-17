@@ -47,7 +47,27 @@ function drush_at_require($module = 'all') {
  * Implements drush_hook_COMMAND_pre_validate()
  */
 function drush_at_require_pm_enable_pre_validate($module) {
-  if (!module_exists($module)) {
-    drush_at_require($module);
+  if (module_exists($module)) {
+    return;
   }
+
+  if ($module === 'at_config') {
+    drush_at_require_spyc();
+  }
+
+  drush_at_require($module);
+}
+
+function drush_at_require_spyc() {
+  $name = 'spyc';
+  $info = array(
+    'type' => 'library',
+    'download' => array(
+      'type' => 'git',
+      'url' => 'https://github.com/mustangostang/spyc.git',
+      'branch' => '0.5.1',
+    ),
+  );
+
+  at_id(new DependencyFetcher($name, $info))->fetch();
 }

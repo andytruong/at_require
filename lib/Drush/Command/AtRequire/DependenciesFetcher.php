@@ -19,7 +19,7 @@ class DependenciesFetcher {
     }
     // Missing spyc
     catch (\RuntimeException $e) {
-      $this->fetchSpyc();
+      drush_at_require_spyc();
       $this->data = at_config($module, 'at_require')->get('projects');
     }
     // Find not found, just ignore
@@ -30,19 +30,5 @@ class DependenciesFetcher {
     foreach ($this->data as $name => $info) {
       at_id(new DependencyFetcher($name, $info))->fetch();
     }
-  }
-
-  private function fetchSpyc() {
-    $name = 'spyc';
-    $info = array(
-      'type' => 'library',
-      'download' => array(
-        'type' => 'git',
-        'url' => 'https://github.com/mustangostang/spyc.git',
-        'branch' => '0.5.1',
-      ),
-    );
-
-    at_id(new DependencyFetcher($name, $info))->fetch();
   }
 }
