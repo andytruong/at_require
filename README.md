@@ -5,7 +5,7 @@ Module provides drush command to download all dependencies for your modules.
 
 Easier for modules/themes to require external libraries.
 
-To define dependencies, modules/themes need defined ./config/at_require.yml
+To list dependencies, modules/themes need defined ./config/at_require.yml
 
 ```yml
 projects:
@@ -28,11 +28,14 @@ projects:
       url: http://malsup.github.io/jquery.cycle.all.js
 ```
 
-To downlaod requirements:
+Drush commands:
 
 ```bash
-$ # Download dependencies for all modules
+$ # Download dependencies for all modules those depend on at_base module
 $ drush at_require
 $ # Download dependencies for specific module
 $ drush at_require module_name
+$ # or just enable the module
+$ #   twig library will be auto downloaded
+$ drush en at_theming
 ```
