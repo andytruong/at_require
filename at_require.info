@@ -1,5 +1,9 @@
-name = AT Rrequire
+name = AT Require
 version = 7.x-1.0-dev
-description = Easier for modules/themes to require external libraries.
+description = Module provides drush command to download all dependencies for your modules.
 core = 7.x
 package = Andy Truong
+
+dependencies[] = at_base
+dependencies[] = at_autoload
+dependencies[] = at_config
