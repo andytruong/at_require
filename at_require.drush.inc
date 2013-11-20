@@ -6,6 +6,7 @@
 
 use \Drupal\at_require\Drush\Command\AtRequire as AtRequireCommand;
 use \Drupal\at_require\Drush\Command\AtRequireSpyc as AtRequireSpycCommand;
+use \Drupal\at_require\Drush\Command\AtRequire\DependencyFetcher;
 
 /**
  * Implements hook_drush_command()
