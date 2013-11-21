@@ -23,7 +23,7 @@ class DependenciesFetcher {
       $this->data = at_config($module, 'at_require')->get('projects');
     }
     // Find not found, just ignore
-    catch (\NotFoundException $e) {}
+    catch (\Drupal\at_config\NotFoundException $e) {}
   }
 
   public function fetch() {
