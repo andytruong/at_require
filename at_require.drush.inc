@@ -48,12 +48,14 @@ function drush_at_require($module = 'all') {
  * Implements drush_hook_COMMAND_pre_validate()
  */
 function drush_at_require_pm_enable_pre_validate($module) {
-  if (module_exists($module)) {
-    return;
+  if (!is_file(DRUPAL_ROOT . '/sites/all/libraries/spyc/Spyc.php')) {
+    if (!function_exists('yaml_parse')) {
+      drush_at_require_spyc();
+    }
   }
 
-  if ($module === 'at_config') {
-    drush_at_require_spyc();
+  if (module_exists($module)) {
+    return;
   }
 
   drush_at_require($module);
